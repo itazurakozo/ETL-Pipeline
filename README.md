@@ -101,6 +101,42 @@ CREATE TABLE Customer_Companies (
 - Values at the end of the CSV file indicates the number of entries
 - Files ending with "m" indicates entires have missing fields
 
+## MySQL Setup
+
+## Configure MySQL to Use TCP/IP Connector
+
+1. Modify MySQL configuration:  
+   ```bash
+   sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+
+2. Add the following lines to the config file, then save and exit:
+    [mysqld]
+    bind-address = 127.0.0.1
+3. Restart MySQL:
+    sudo service mysql restart
+4. Verify MySQL is listening on 127.0.0.1:
+    netstat -tulnp | grep 3306
+    -Expected response
+      tcp  0  0 127.0.0.1:3306  0.0.0.0:*  LISTEN  ...
+
+If you do not have your MySQL login:
+1. Login to MySQL as root:
+    sudo mysql -u root
+2. Update root password (replace 'yourpassword' accordingly):
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'yourpassword';
+3. Update privileges:
+    GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;
+    FLUSH PRIVILEGES;
+
+Database Setup
+1. Start MySQL service:
+    sudo service mysql start
+2. Login to MySQL:
+    sudo mysql -u root -p
+3. Create a database named customer_db:
+    CREATE DATABASE customer_db;
+    USE customer_db;
+    ```
 
 ## dotENV
 - DB_HOST=127.0.0.1
