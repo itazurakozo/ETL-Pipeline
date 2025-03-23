@@ -148,6 +148,18 @@ Database Setup
     USE customer_db;
     ```
 
+## To get started
+- Once database has been setup and confirmed on 127.0.0.1
+```bash
+  npm start
+  ```
+- Click on "Load Data" to begin ETL Process.
+
+- Get Status can be clicked immediately and will poll for status update every 3 seconds
+
+- Fetch Logs to render processing log
+
+
 ## dotENV
 - DB_HOST=127.0.0.1
 - DB_USER=root
